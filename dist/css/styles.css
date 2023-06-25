@@ -15,7 +15,13 @@ body {
 .etch-a-sketch {
   display: flex;
   flex-wrap: wrap;
-  height: 25%;
-  width: 25%;
+  flex-direction: column;
+  height: 50vh;
+  width: 50vh;
   background-color: white;
+  overflow: hidden;
+}
+
+.square {
+  background-color: black;
 }/*# sourceMappingURL=styles.css.map */

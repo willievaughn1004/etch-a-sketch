@@ -1,30 +1,37 @@
-// const newSquare = document.createElement("div");
-const newSquare1 = document.createElement("div");
-// newSquare.style.cssText = "background-color: black; height: 10%; width: 10%;";
-newSquare1.style.cssText = "background-color: black; height: 10%; width: 10%;";
 const etchASketch = document.querySelector(".etch-a-sketch");
 
-// etchASketch.append(newSquare);
+function makeSquare(size) {
+  let move = false;
 
-// for (let i = 0; i < 5; i++) {
-//   etchASketch.append(newSquare);
-//   etchASketch.append(newSquare1);
-// }
-
-// etchASketch.append(newSquare);
-// etchASketch.append(newSquare);
-
-function makeSquare() {
   const newSquare = document.createElement("div");
-  newSquare.style.cssText = "background-color: black; height: 10%; width: 10%;";
 
+  newSquare.style.width = `calc(100% / ${size})`;
+  newSquare.style.height = `calc(100% / ${size})`;
+
+  newSquare.classList.add("square");
   etchASketch.append(newSquare);
+
+  newSquare.addEventListener("mousedown", function () {
+    newSquare.style.backgroundColor = "white";
+    moved = true;
+  });
+
+  newSquare.addEventListener("mousemove", function () {
+    if (moved) {
+      newSquare.style.backgroundColor = "white";
+    }
+  })
+
+  newSquare.addEventListener("mouseup", function () {
+    moved = false;
+  });
+  
 }
 
-function makeSquares(squares) {
-  for (let i = squares; i > 0; i--) {
-    makeSquare()
+function makeGrid(squares) {
+  for (let i = 4500; i > 0; i--) {
+    makeSquare(squares);
   }
 }
 
-makeSquares(50)
+makeGrid(30);
