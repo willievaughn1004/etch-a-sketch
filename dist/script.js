@@ -45,6 +45,7 @@ function makeSquare(size) {
 
     if (eraserMode) {
       newSquare.style.backgroundColor = `white`;
+      newSquare.style.opacity = 1;
     }
 
     if (rainbowMode) {
@@ -73,6 +74,7 @@ function makeSquare(size) {
 
       if (eraserMode) {
         newSquare.style.backgroundColor = `white`;
+        newSquare.style.opacity = 1;
       }
 
       if (rainbowMode) {
