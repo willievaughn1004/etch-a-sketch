@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <script src="./script.js" defer></script>
     <title>Etch-a-Sketch</title>
-</head>
-<body>
-    <div class="etch-a-sketch">
-
-
+  </head>
+  <body>
+    <div>
+      <h1>Etch-a-Sketch</h1>
+      <div class="etch-a-sketch"></div>
     </div>
-</body>
+    <div class="menu">
+        <input class="color-input" type="color" value="#000"></input>
+        <button class="color-mode">Color mode</button>
+        <button class="rainbow-mode">Rainbow mode</button>
+        <button class="eraser">Eraser</button>
+        <button class="clear">Clear</button>
+        <div class="set-grid">
+          <label class="range-display"></label>
+          <input class ="range-slider" type="range" min="1" max="100" value="16">
+        </div>
+    </div>
+  </body>
 </html>

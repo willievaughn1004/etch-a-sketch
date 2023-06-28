@@ -8,9 +8,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 
   height: 100svh;
   background-color: gray;
+}
+
+button, input {
+  cursor: pointer;
 }
 
 .etch-a-sketch {
@@ -20,10 +25,17 @@ body {
 
   height: 50vh;
   width: 50vh;
-  background-color: white;
-  overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 .square {
-  background-color: black;
+  background-color: white;
+}
+
+.set-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem 0;
 }
