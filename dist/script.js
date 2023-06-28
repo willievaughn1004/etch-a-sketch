@@ -4,7 +4,7 @@ const etchASketch = document.querySelector(".etch-a-sketch");
 
 const colorButton = document.querySelector(".color-mode");
 const rainbowButton = document.querySelector(".rainbow-mode");
-const eraserButton = document.querySelector(".eraser");
+const eraserButton = document.querySelector(".eraser-mode");
 const clearButton = document.querySelector(".clear");
 const darkeningButton = document.querySelector(".darkening-mode");
 
@@ -13,10 +13,7 @@ const rangeSlider = document.querySelector(".range-slider");
 const colorInput = document.querySelector(".color-input");
 
 let moved = false;
-let eraserMode = false;
-let colorMode = true;
-let rainbowMode = false;
-let darkeningMode = false;
+let etchMode = "color-mode";
 let opacity = 0.1;
 
 // Functions
@@ -28,23 +25,23 @@ function resizeSquare() {
 }
 
 function setColor(square) {
-  if (colorMode) {
+  if (etchMode === "color-mode") {
     square.style.backgroundColor = `${colorInput.value}`;
   }
 
-  if (eraserMode) {
+  if (etchMode === "eraser-mode") {
     square.style.opacity = 1;
     square.style.backgroundColor = `white`;
   }
 
-  if (rainbowMode) {
+  if (etchMode === "rainbow-mode") {
     const randomR = Math.floor(Math.random() * 256);
     const randomG = Math.floor(Math.random() * 256);
     const randomB = Math.floor(Math.random() * 256);
     square.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
   }
 
-  if (darkeningMode) {
+  if (etchMode === "darkening-mode") {
     square.style.opacity = `${opacity}`;
     square.style.backgroundColor = `${colorInput.value}`;
 
@@ -53,6 +50,11 @@ function setColor(square) {
       console.log(opacity);
     }
   }
+}
+
+function changeMode(mode) {
+  etchMode = mode.className;
+  opacity = 0.1;
 }
 
 function makeSquare(size) {
@@ -99,33 +101,17 @@ rangeSlider.addEventListener("change", resizeSquare);
 rangeSlider.addEventListener("mousemove", resizeSquare);
 
 colorButton.addEventListener("click", function () {
-  colorMode = true;
-  eraserMode = false;
-  rainbowMode = false;
-  darkeningMode = false;
-  opacity = 0.1;
+  changeMode(this);
 });
 
 eraserButton.addEventListener("click", function () {
-  colorMode = false;
-  eraserMode = true;
-  rainbowMode = false;
-  darkeningMode = false;
-  opacity = 0.1;
+  changeMode(this);
 });
 
 rainbowButton.addEventListener("click", function () {
-  colorMode = false;
-  eraserMode = false;
-  rainbowMode = true;
-  darkeningMode = false;
-  opacity = 0.1;
+  changeMode(this);
 });
 
 darkeningButton.addEventListener("click", function () {
-  colorMode = false;
-  eraserMode = false;
-  rainbowMode = false;
-  darkeningMode = true;
-  opacity = 0.1;
+  changeMode(this);
 });
