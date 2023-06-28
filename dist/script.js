@@ -27,6 +27,34 @@ function resizeSquare() {
   rangeDisplay.textContent = `${rangeSlider.value} x ${rangeSlider.value}`;
 }
 
+function setColor(square) {
+  if (colorMode) {
+    square.style.backgroundColor = `${colorInput.value}`;
+  }
+
+  if (eraserMode) {
+    square.style.opacity = 1;
+    square.style.backgroundColor = `white`;
+  }
+
+  if (rainbowMode) {
+    const randomR = Math.floor(Math.random() * 256);
+    const randomG = Math.floor(Math.random() * 256);
+    const randomB = Math.floor(Math.random() * 256);
+    square.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+  }
+
+  if (darkeningMode) {
+    square.style.opacity = `${opacity}`;
+    square.style.backgroundColor = `${colorInput.value}`;
+
+    if (opacity < 1) {
+      opacity += 0.1;
+      console.log(opacity);
+    }
+  }
+}
+
 function makeSquare(size) {
   const newSquare = document.createElement("div");
 
@@ -38,61 +66,12 @@ function makeSquare(size) {
 
   newSquare.addEventListener("mousedown", function () {
     moved = true;
-
-    if (colorMode) {
-      newSquare.style.backgroundColor = `${colorInput.value}`;
-    }
-
-    if (eraserMode) {
-      newSquare.style.opacity = 1;
-      newSquare.style.backgroundColor = `white`;
-    }
-
-    if (rainbowMode) {
-      const randomR = Math.floor(Math.random() * 256);
-      const randomG = Math.floor(Math.random() * 256);
-      const randomB = Math.floor(Math.random() * 256);
-      newSquare.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
-    }
-
-    if (darkeningMode) {
-      newSquare.style.opacity = `${opacity}`;
-      newSquare.style.backgroundColor = `${colorInput.value}`;
-
-      if (opacity < 1) {
-        opacity += 0.1;
-        console.log(opacity);
-      }
-    }
+    setColor(this);
   });
 
   newSquare.addEventListener("mouseover", function () {
     if (moved) {
-      if (colorMode) {
-        newSquare.style.backgroundColor = `${colorInput.value}`;
-      }
-
-      if (eraserMode) {
-        newSquare.style.opacity = 1;
-        newSquare.style.backgroundColor = `white`;
-      }
-
-      if (rainbowMode) {
-        const randomR = Math.floor(Math.random() * 256);
-        const randomG = Math.floor(Math.random() * 256);
-        const randomB = Math.floor(Math.random() * 256);
-        newSquare.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
-      }
-
-      if (darkeningMode) {
-        newSquare.style.opacity = `${opacity}`;
-        newSquare.style.backgroundColor = `${colorInput.value}`;
-
-        if (opacity < 1) {
-          opacity += 0.1;
-          console.log(opacity);
-        }
-      }
+      setColor(this);
     }
   });
 
